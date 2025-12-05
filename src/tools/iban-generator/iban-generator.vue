@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { random } from '@/utils/random';
 
 const countries = [
   { code: 'AL', name: 'Albania', bankCodeLength: 8, accountNumberLength: 16, prefix: '' },
@@ -89,7 +90,7 @@ function padLeft(str: string, length: number, char = '0') {
 function randomDigits(length: number) {
   let digits = '';
   for (let i = 0; i < length; i++) {
-    digits += Math.floor(Math.random() * 10).toString();
+    digits += Math.floor(random() * 10).toString();
   }
   return digits;
 }
