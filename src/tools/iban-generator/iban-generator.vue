@@ -124,7 +124,7 @@ function generateIban() {
 function calculateCheckDigits(countryCode: string, bban: string) {
   // IBAN check digits according to ISO 7064
   let replaced = `${bban + countryCode}00`;
-  replaced = replaced.replace(/[A-Z]/g, c => (c.charCodeAt(0) - 55).toString());
+  replaced = replaced.replace(/[A-Z]/g, c => (c.codePointAt(0)! - 55).toString());
 
   const remainder = BigInt(replaced) % 97n;
   const check = 98n - remainder;
